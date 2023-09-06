@@ -2,8 +2,6 @@
 
 let choices = ["rock", "paper", "scissors"]
 
-let computerChoice = getComputerChoice();
-
 function getComputerChoice () {
     return choices[Math.floor(Math.random() * choices.length)];
 }
@@ -17,6 +15,7 @@ return playerSelection;
 
 //function to determine who wins or losers the game
 function playRound(computerChoice , playerSelection) {
+    console.log(computerChoice)
     if(computerChoice === playerSelection){
         return "It's a tie! Play again!"
     } else if ((computerChoice === "rock" && playerSelection === "scissors")|| 
@@ -37,10 +36,10 @@ let ties = 0;
 
 function game(){
 
-for ( let i=0; i < 5 ; i++){
+for ( let i=playerScore; i < 5 ; i++){
      
-    let answer = playRound(computerChoice,playersChoice());
-        console.log(answer)
+    let answer = playRound(getComputerChoice(),playersChoice());
+        
 
     if (answer === "Computer wins, try again!"){
         computerScore++;
@@ -49,7 +48,8 @@ for ( let i=0; i < 5 ; i++){
     } else {
         console.log("Still a tie")
     } 
-    
+
+console.log(answer);  
 console.log(playerScore);
 console.log(computerScore);
 
