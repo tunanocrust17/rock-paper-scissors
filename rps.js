@@ -8,11 +8,14 @@ function getComputerChoice () {
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-
 //prompt for the user to input if they choose rock, paper, or scissors
+function playersChoice(){
 let playerInput = prompt("Please choose rock, paper, or scisscors");
 let playerSelection = playerInput.toLowerCase();
+return playerSelection;
+}
 
+//function to determine who wins or losers the game
 function playRound(computerChoice , playerSelection) {
     if(computerChoice === playerSelection){
         return "It's a tie! Play again!"
@@ -27,4 +30,32 @@ function playRound(computerChoice , playerSelection) {
     } else { return "hmmm looks like you added another element, please try again" };
 }
 
-console.log(playRound(computerChoice,playerSelection));
+
+let playerScore = 0;  
+let computerScore = 0;
+let ties = 0;
+
+function game(){
+
+for ( let i=0; i < 5 ; i++){
+     
+    let answer = playRound(computerChoice,playersChoice());
+        console.log(answer)
+
+    if (answer === "Computer wins, try again!"){
+        computerScore++;
+    } else if(answer === "Player wins, woohoo!"){
+        playerScore++;
+    } else {
+        console.log("Still a tie")
+    } 
+    
+console.log(playerScore);
+console.log(computerScore);
+
+} 
+}
+
+game();
+
+// console.log(playRound(computerChoice, playersChoice()))
