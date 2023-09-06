@@ -5,4 +5,5 @@ function getComputerChoice () {
     return(computerChoice);
 }
 
-getComputerChoice();
+let userChoice = prompt("Please choose rock, paper, or scisscors");
+console.log(userChoice.toLowerCase());
