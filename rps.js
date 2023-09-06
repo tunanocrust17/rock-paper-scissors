@@ -16,17 +16,13 @@ let playerSelection = playerInput.toLowerCase();
 function playRound(computerChoice , playerSelection) {
     if(computerChoice === playerSelection){
         return "It's a tie! Play again!"
-    } else if (computerChoice === "rock" && playerSelection === "scissors"){
+    } else if ((computerChoice === "rock" && playerSelection === "scissors")|| 
+            (computerChoice === "scissors" && playerSelection === "paper")||
+            (computerChoice === "paper" && playerSelection === "rock")) {
         return "Computer wins, try again!"
-    } else if (computerChoice === "scissors" && playerSelection === "rock"){
-        return "Player wins, woohoo!"
-    } else if (computerChoice === "scissors" && playerSelection === "paper"){
-        return "Computer wins, try again!"
-    } else if (computerChoice === "paper" && playerSelection === "scissors"){
-        return "Player wins, woohoo!"
-    } else if (computerChoice === "paper" && playerSelection === "rock"){
-        return "Computer wins, try again!"
-    } else if (computerChoice === "rock" && playerSelection === "paper"){
+    } else if ((computerChoice === "scissors" && playerSelection === "rock")||
+            (computerChoice === "paper" && playerSelection === "scissors")||
+            (computerChoice === "rock" && playerSelection === "paper")){
         return "Player wins, woohoo!"
     } else { return "hmmm looks like you added another element, please try again" };
 }
