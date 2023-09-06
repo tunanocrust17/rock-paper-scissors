@@ -1,5 +1,4 @@
 // computer selection code to choose between rock paper or scissors
-
 let choices = ["rock", "paper", "scissors"]
 
 function getComputerChoice () {
@@ -29,25 +28,31 @@ function playRound(computerChoice , playerSelection) {
     } else { return "hmmm looks like you added another element, please try again" };
 }
 
-
+// game code to keep track of scoring for a game of 5
 let playerScore = 0;  
 let computerScore = 0;
 let ties = 0;
 
 function game(){
 
-for ( let i=playerScore; i < 5 ; i++){
+for ( let i=0; i<30 ; i++){
      
     let answer = playRound(getComputerChoice(),playersChoice());
         
-
-    if (answer === "Computer wins, try again!"){
+    if(playerScore === 5){
+        return "Woohoo player wins!"
+    } else if ( computerScore === 5){
+        return "dang you lost!"
+    } else {    
+        if (answer === "Computer wins, try again!"){
         computerScore++;
     } else if(answer === "Player wins, woohoo!"){
         playerScore++;
     } else {
-        console.log("Still a tie")
+        console.log("It's a tie!")
     } 
+}
+
 
 console.log(answer);  
 console.log(playerScore);
@@ -57,5 +62,3 @@ console.log(computerScore);
 }
 
 game();
-
-// console.log(playRound(computerChoice, playersChoice()))
