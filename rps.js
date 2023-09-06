@@ -1,9 +1,34 @@
+// computer selection code to choose between rock paper or scissors
+
+let choices = ["rock", "paper", "scissors"]
+
+let computerChoice = getComputerChoice();
 
 function getComputerChoice () {
-    let choices = ["rock", "paper", "scissors"]
-    let computerChoice = choices[Math.floor(Math.random() * choices.length)];
-    return(computerChoice);
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
-let userChoice = prompt("Please choose rock, paper, or scisscors");
-console.log(userChoice.toLowerCase());
+
+//prompt for the user to input if they choose rock, paper, or scissors
+let playerInput = prompt("Please choose rock, paper, or scisscors");
+let playerSelection = playerInput.toLowerCase();
+
+function playRound(computerChoice , playerSelection) {
+    if(computerChoice === playerSelection){
+        return "It's a tie! Play again!"
+    } else if (computerChoice === "rock" && playerSelection === "scissors"){
+        return "Computer wins, try again!"
+    } else if (computerChoice === "scissors" && playerSelection === "rock"){
+        return "Player wins, woohoo!"
+    } else if (computerChoice === "scissors" && playerSelection === "paper"){
+        return "Computer wins, try again!"
+    } else if (computerChoice === "paper" && playerSelection === "scissors"){
+        return "Player wins, woohoo!"
+    } else if (computerChoice === "paper" && playerSelection === "rock"){
+        return "Computer wins, try again!"
+    } else if (computerChoice === "rock" && playerSelection === "paper"){
+        return "Player wins, woohoo!"
+    } else { return "hmmm looks like you added another element, please try again" };
+}
+
+console.log(playRound(computerChoice,playerSelection));
