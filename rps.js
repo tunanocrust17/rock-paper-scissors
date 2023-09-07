@@ -12,6 +12,10 @@ let playerSelection = playerInput.toLowerCase();
 return playerSelection;
 }
 
+
+let playerScore = 0;  
+let computerScore = 0;
+
 //function to determine who wins or losers the game
 function playRound(computerChoice , playerSelection) {
     console.log(computerChoice)
@@ -20,45 +24,50 @@ function playRound(computerChoice , playerSelection) {
     } else if ((computerChoice === "rock" && playerSelection === "scissors")|| 
             (computerChoice === "scissors" && playerSelection === "paper")||
             (computerChoice === "paper" && playerSelection === "rock")) {
-        return "Computer wins, try again!"
+                computerScore++;
+                return "Computer wins, try again!"
+        
     } else if ((computerChoice === "scissors" && playerSelection === "rock")||
             (computerChoice === "paper" && playerSelection === "scissors")||
             (computerChoice === "rock" && playerSelection === "paper")){
-        return "Player wins, woohoo!"
+                playerScore++;
+                return "Player wins, woohoo!"
+
     } else { return "hmmm looks like you added another element, please try again" };
 }
 
-// game code to keep track of scoring for a game of 5
-let playerScore = 0;  
-let computerScore = 0;
-let ties = 0;
+// console.log(playRound(getComputerChoice() , playersChoice()))
 
-function game(){
 
-for ( let i=0; i<30 ; i++){
-     
-    let answer = playRound(getComputerChoice(),playersChoice());
-        
-    if(playerScore === 5){
-        return "Woohoo player wins!"
-    } else if ( computerScore === 5){
-        return "dang you lost!"
-    } else {    
-        if (answer === "Computer wins, try again!"){
-        computerScore++;
-    } else if(answer === "Player wins, woohoo!"){
-        playerScore++;
-    } else {
-        console.log("It's a tie!")
+let scoreCheck = false;
+
+function checkScore(){
+    if(playerScore === 5 || computerScore === 5){
+        scoreCheck = true;
     } 
 }
 
 
-console.log(answer);  
-console.log(playerScore);
-console.log(computerScore);
+// game code to keep track of scoring for a game of 5
 
+
+function game(){
+
+for ( let i=0; scoreCheck===false ; i++){
+     
+    let answer = playRound(getComputerChoice(),playersChoice());
+    let score = checkScore();
+    console.log(answer);  
+    console.log(playerScore);
+    console.log(computerScore);
+
+    if (score === true) {
+        console.log("game over");
+    } else {
+        console.log("keep playing");
+    }
 } 
+
 }
 
 game();
