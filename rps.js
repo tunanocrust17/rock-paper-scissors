@@ -52,6 +52,7 @@ function checkScore(){
 
 function game(){
 
+//the for loop will continue to run as a long as scoreCheck remains false which will only be true once the computer or player reach 5
 for ( let i=0; scoreCheck===false ; i++){
      
     let answer = playRound(getComputerChoice(),playersChoice());
