@@ -5,35 +5,27 @@ function getComputerChoice () {
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-//prompt for the user to input if they choose rock, paper, or scissors
-function playersChoice(){
-let playerInput = prompt("Please choose rock, paper, or scisscors");
-let playerSelection = playerInput.toLowerCase();
-return playerSelection;
-}
-
 
 let playerScore = 0;  
 let computerScore = 0;
 
 //function to determine who wins or losers the game
-function playRound(computerChoice , playerSelection) {
+function playRound(computerChoice, playersChoice) {
     console.log(computerChoice)
-    if(computerChoice === playerSelection){
-        return "It's a tie! Play again!"
-    } else if ((computerChoice === "rock" && playerSelection === "scissors")|| 
-            (computerChoice === "scissors" && playerSelection === "paper")||
-            (computerChoice === "paper" && playerSelection === "rock")) {
+    console.log(playersChoice)
+    if(computerChoice === playersChoice){
+        return "It's a tie! Play again!";
+    } else if ((computerChoice === "rock" && playersChoice === "scissors")|| 
+            (computerChoice === "scissors" && playersChoice === "paper")||
+            (computerChoice === "paper" && playersChoice === "rock")) {
                 computerScore++;
-                return "Computer wins, try again!"
-        
-    } else if ((computerChoice === "scissors" && playerSelection === "rock")||
-            (computerChoice === "paper" && playerSelection === "scissors")||
-            (computerChoice === "rock" && playerSelection === "paper")){
+                return "Computer wins, try again!";     
+    } else if ((computerChoice === "scissors" && playersChoice === "rock")||
+            (computerChoice === "paper" && playersChoice === "scissors")||
+            (computerChoice === "rock" && playersChoice === "paper")){
                 playerScore++;
-                return "Player wins, woohoo!"
-
-    } else { return "hmmm looks like you added another element, please try again" };
+                return "Player wins, woohoo!";
+    } 
 }
 
 
@@ -46,32 +38,63 @@ function checkScore(){
     } 
 }
 
-
+// playRound(getComputerChoice(), userGuess);
 // game code to keep track of scoring for a game of 5
+
 
 
 function game(){
 
-//the for loop will continue to run as a long as scoreCheck remains false which will only be true once the computer or player reach 5
-for ( let i=0; scoreCheck===false ; i++){
-     
-    let answer = playRound(getComputerChoice(),playersChoice());
-    checkScore();
-    console.log(answer);  
-    console.log(playerScore);
-    console.log(computerScore);
+let answer = playRound(getComputerChoice(), userGuess);
+console.log(answer);
+checkScore();
+console.log(playerScore);
+console.log(computerScore);
 
-    if (scoreCheck === true) {
-        if(playerScore > computerScore){
-            console.log("Great job we won!");
-        } else {
-            console.log("NOOOOOOOOOO the computer beat us try again!")
-        }
+if (scoreCheck === true) {
+    if(playerScore > computerScore){
+        console.log("Great job we won!");
     } else {
-        console.log("keep playing");
+        console.log("NOOOOOOOOOO the computer beat us try again!")
     }
-} 
-
+} else {
+    console.log("keep playing");
+}
 }
 
-game();
+//allows the users to choose rock, paper, or scissors using the buttons
+let userGuess = "";
+
+function playersChoice(){
+    userGuess = this.textContent;
+    game();
+};
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach( button=> {button.addEventListener('click', playersChoice);
+});
+
+
+//the for loop will continue to run as a long as scoreCheck remains false which will only be true once the computer or player reach 5
+// for ( let i=0; scoreCheck===false ; i++){
+     
+//     let answer = playRound(getComputerChoice(),playersSelection);
+//     checkScore();
+//     console.log(answer);  
+//     console.log(playerScore);
+//     console.log(computerScore);
+
+//     if (scoreCheck === true) {
+//         if(playerScore > computerScore){
+//             console.log("Great job we won!");
+//         } else {
+//             console.log("NOOOOOOOOOO the computer beat us try again!")
+//         }
+//     } else {
+//         console.log("keep playing");
+//     }
+// } 
+
+
+
+// game();
