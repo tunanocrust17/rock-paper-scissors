@@ -6,8 +6,12 @@ function getComputerChoice () {
 }
 
 
-let playerScore = 0;  
+let playerScore = 0;
+let playerScoreHTML = document.querySelector('.player-score');  
+
 let computerScore = 0;
+let comptuerScoreHTML = document.querySelector('.computer-score');
+
 
 //function to determine who wins or losers the game
 function playRound(computerChoice, playersChoice) {
@@ -50,6 +54,8 @@ console.log(answer);
 checkScore();
 console.log(playerScore);
 console.log(computerScore);
+playerScoreHTML.textContent = playerScore;
+comptuerScoreHTML.textContent = computerScore;
 
 if (scoreCheck === true) {
     if(playerScore > computerScore){
