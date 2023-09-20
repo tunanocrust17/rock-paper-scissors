@@ -20,7 +20,6 @@ function checkScore(){
     } 
 }
 
-
 //function to determine who wins or losers the game
 function playRound(computerChoice, playersChoice) {
     console.log(computerChoice)
